@@ -40,8 +40,8 @@ routes: [
 ### Q：如果用上面的那一问方法的话，这个父组件不是和App.vue处于一个重复的作用了么
 A：在没有`vue-router`的项目中，`Vue.js`框架主要是用以开发单页面应用，而我们在利用`vue-cli`脚手架工具创建的项目中，是引入了`vue-router`，则这个框架可以用来开发多页面应用，此时可以理解`App.vue`是这个应用（多页面）的根组件，多个页面可由`App.vue`控制，根据`App.vue`里的`<router-view>`进行渲染，然后我们自定义的这个父组件是单页面的根组件，用于单页面里的各个子组件的通信与管理，最后通过路由引入，就相当于自定义了多个应用内的页面了
 
-### Q：怎么将 Vue 和 Laravel 框架的结合起来实现前后端分离
-A：首先在前端的 Vue 框架里，需要安装一个[vue-axios](https://github.com/imcvampire/vue-axios)，这是根据`api`获取数据的vue插件。
+### Q：怎么将 Vue 和 Laravel 框架的结合起来实现前后端分离
+A：首先在前端的 Vue 框架里，需要安装一个[vue-axios](https://github.com/imcvampire/vue-axios)，这是根据`api`获取数据的vue插件。
 使用方法：
 * 先在项目中 ``` npm install --save axios vue-axios ```
 * 其次在`main.js`中 写入
