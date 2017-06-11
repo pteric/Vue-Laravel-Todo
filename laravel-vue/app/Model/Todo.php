@@ -8,4 +8,5 @@ class Todo extends Model
 {
     protected $table = 'todo_item';
     protected $primaryKey = 'id';
+    protected $guarded = [];
 }

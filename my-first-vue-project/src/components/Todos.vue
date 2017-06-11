@@ -1,9 +1,8 @@
 <template>
     <ul class="list-group">
         <li class="list-group-item" v-for="(todo, index) in todos" v-bind:class="{'completed': todo.completed }">
-            
-             <router-link :to="{ name: 'Todo', params: { id: todo.id }}">{{ todo.content }}</router-link>
-            <button class="btn btn-warning btn-xs pull-right" v-on:click="deleteTodo(index)">Delete</button>
+            <router-link :to="{ name: 'Todo', params: { id: todo.id }}">{{ todo.content }}</router-link>
+            <button class="btn btn-warning btn-xs pull-right" v-on:click="deleteTodo(todo, index)">Delete</button>
             <button class="btn btn-success btn-xs pull-right" v-on:click="completeTodo(todo)" v-bind:class="[ todo.completed ? 'btn-danger' : 'btn-success' ]">
                 {{ todo.completed ? 'undo' : 'done' }}
             </button>
@@ -15,11 +14,17 @@
 export default {
     props: ['todos'],
     methods: {
-        deleteTodo: function (index) {
-            this.todos.splice(index, 1);
+        deleteTodo: function (todo, index) {
+            this.axios.delete('http://127.0.0.1:8000/api/todo/' + todo.id + '/delete').then(response=>{
+                this.todos.splice(index, 1)
+                console.log(response.data)
+            })
         },
         completeTodo: function (todo) {
-            todo.completed = !todo.completed
+            this.axios.patch('http://127.0.0.1:8000/api/todo/' + todo.id + '/complete').then(response=>{
+                todo.completed = !todo.completed
+                console.log(response.data)
+            })
         }
     }
 }
