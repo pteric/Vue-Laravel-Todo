@@ -19,12 +19,10 @@ export default {
     },
     methods: {
         createTodo: function () {
-            this.todos.push(this.newTodo);
-            this.newTodo = {
-                id: null,
-                content: '',
-                completed: false
-            }
+            this.axios.post('http://127.0.0.1:8000/api/todo/create', {content: this.newTodo.content}).then(response=>{
+                this.todos.push(response.data);
+                console.log(response.data);
+            })
         }
     }
 }
