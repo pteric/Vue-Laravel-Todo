@@ -69,6 +69,6 @@ mounted() {
 * 然后在`config/app.php`文件中的`providers`数组添加`Barryvdh\Cors\ServiceProvider::class,`
 * 最后在`app/Http/Kernel.php`文件中，`$middleware` 中，添加`\Barryvdh\Cors\HandleCors::class,`，已达到全局使用，当然也可以局部使用，在`github`上的文档有描述
 
-xx
+xxyy
 
 现在再访问启动两个服务，就可以发现后端数据已经传到前端，从而实现了前后端开发分离
